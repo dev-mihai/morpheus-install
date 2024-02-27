@@ -224,6 +224,15 @@ resource "morpheus_vsphere_instance" "morph_install_vsphere_instance" {
   labels             = ["morph_install", "terraform"]
   workflow_id        = morpheus_provisioning_workflow.morph_install_provisioning_workflow.id
 
+  volumes {
+    # datastore_id     = 12 - [local-NVME], 13 - [TrueNAS]
+    datastore_id     = 12
+    name             = "root"
+    root             = true
+    size             = 60
+    storage_type     = 1
+  }
+
   skip_agent_install = true
 
   interfaces {
@@ -241,7 +250,4 @@ resource "morpheus_vsphere_instance" "morph_install_vsphere_instance" {
     masked = true
   }
 
-  custom_options = {
-    awsRegion = "us-east-1"
-  }
 }
