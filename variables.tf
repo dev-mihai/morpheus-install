@@ -9,6 +9,7 @@ variable "access_token" {
 
 variable "username" {
   type    = string
+  default = "mihai"
 }
 
 variable "password" {
