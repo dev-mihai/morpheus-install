@@ -74,7 +74,7 @@ resource "morpheus_shell_script_task" "morph_install_shell_local" {
     echo "****Disable Unattended Upgrades****" >> /tmp/morph_install_log.txt 
     yes Y | apt remove unattended-upgrades >> /tmp/morph_install_log.txt  
 
-    echo "****Download Morpheus****" >> /tmp/morph_install_log.txt 
+    echo "****Downloading Morpheus****" >> /tmp/morph_install_log.txt 
     wget "https://downloads.morpheusdata.com/files/morpheus-appliance_"$morph_version"_amd64.deb" >> /tmp/morph_install_log.txt  
 
     # Wait for dpkg frontend file lock to be released
@@ -84,7 +84,7 @@ resource "morpheus_shell_script_task" "morph_install_shell_local" {
         sleep 5
     done
 
-    echo "****Install Morpheus****" >> /tmp/morph_install_log.txt 
+    echo "****Installing Morpheus****" >> /tmp/morph_install_log.txt 
     dpkg -i "morpheus-appliance_"$morph_version"_amd64.deb" >> /tmp/morph_install_log.txt  
 
     #Change the morpheus.rb file to use the IP address instead of hostname for appliance url
@@ -97,7 +97,7 @@ resource "morpheus_shell_script_task" "morph_install_shell_local" {
     rm /etc/morpheus/morpheus.rb
     echo "appliance_url 'https://$app_ip'" >> /etc/morpheus/morpheus.rb
 
-    echo "****Reconfigure Morpheus****" >> /tmp/morph_install_log.txt 
+    echo "****Reconfiguring Morpheus****" >> /tmp/morph_install_log.txt 
     morpheus-ctl reconfigure >> /tmp/morph_install_log.txt  
 
 
@@ -225,7 +225,7 @@ resource "morpheus_vsphere_instance" "morph_install_vsphere_instance" {
   workflow_id        = morpheus_provisioning_workflow.morph_install_provisioning_workflow.id
 
   volumes {
-    # datastore_id     = 12 - [local-NVME], 13 - [TrueNAS]
+    # datastore_id     = 12 - [local-NVME], 13 - [TrueNAS], 36 - [local-SSD]
     datastore_id     = 12
     name             = "root"
     root             = true
@@ -249,5 +249,4 @@ resource "morpheus_vsphere_instance" "morph_install_vsphere_instance" {
     export = true
     masked = true
   }
-
 }
