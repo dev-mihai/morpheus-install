@@ -41,7 +41,7 @@ resource "morpheus_cypher_secret" "morph_install_cypher_license" {
 
 # Define Shell Script Task Resource
 resource "morpheus_shell_script_task" "morph_install_shell_local" {
-  name                = "morph-install-app-deployment"
+  name                = format("morph-install-%s", timestamp())
   code                = "morph-install-app-deployment"
   labels              = ["morph_install", "terraform"]
   source_type         = "local"
@@ -199,8 +199,8 @@ EOF
 
 # Define Provisioning Workflow Resource
 resource "morpheus_provisioning_workflow" "morph_install_provisioning_workflow" {
-  name        = "morph-install-provisioning-workflow"
-  description = "Terraform provisioning workflow example"
+  name        = format("morph-install-%s", timestamp())
+  description = "Morph-install provisioning workflow"
   labels      = ["morph_install", "terraform"]
   platform    = "linux"
   visibility  = "private"
@@ -213,13 +213,12 @@ resource "morpheus_provisioning_workflow" "morph_install_provisioning_workflow" 
 # Define vSphere Instance Resource
 resource "morpheus_vsphere_instance" "morph_install_vsphere_instance" {
   name               = "morph-install-app-$${sequence + 1000}"
-  description        = "Terraform instance example"
+  description        = "Morph-install - provisioning the Instance"
   cloud_id           = data.morpheus_cloud.morph_install_vsphere.id
   group_id           = data.morpheus_group.morph_install_group.id
   instance_type_id   = data.morpheus_instance_type.morph_install_ubuntu.id
   instance_layout_id = data.morpheus_instance_layout.morph_install_ubuntu.id
   plan_id            = data.morpheus_plan.morph_install_vmware.id
-  environment        = "dev"
   resource_pool_id   = data.morpheus_resource_pool.morph_install_vsphere_resource_pool.id
   labels             = ["morph_install", "terraform"]
   workflow_id        = morpheus_provisioning_workflow.morph_install_provisioning_workflow.id
