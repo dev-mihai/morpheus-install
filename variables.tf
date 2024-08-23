@@ -12,7 +12,7 @@ variable "access_token" {
 
 variable "morph_version" {
   type    = string
-  default = "7.0.4-1"
+  default = "7.0.5-1"
 }
 
 variable "username" {
@@ -32,6 +32,6 @@ variable "licenseKey" {
   type    = string
   default = ""
   sensitive = true
-  description = "Specify your Morpheus License Key. The default is a Community one"
+  description = "Specify your Morpheus License Key"
 }
 

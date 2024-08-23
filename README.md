@@ -1,4 +1,3 @@
-
 # Morpheus TF All-in-One Deployment Guide
 
 ## Overview
@@ -30,7 +29,9 @@ The following resources typically use default values and may not require changes
 
 ## Deployment Process
 
-(This section intentionally left blank in the original document. Consider adding step-by-step instructions for the actual deployment process here.)
+1. In Morpheus, navigate to **Administration > Integrations** and create a Git-type integration using the repository URL: `https://github.com/dev-mihai/morpheus-install`.
+2. Go to **Library > Blueprints > App Blueprints** and create a Terraform app blueprint. Reference the SCM integration you created in Step 1, as shown in this [example](https://d.pr/i/4WAHjk).
+3. Deploy the app. When prompted under the **Terraform Variables** dropdown, add your Morpheus License.
 
 ## Disclaimer
 
