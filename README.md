@@ -56,14 +56,14 @@ terraform apply --auto-approve
 
 Here's what you need to define in `terraform.tfvars`:
 
-| Variable          | Required | Description                                          | Example                                  |
-| ----------------- | -------- | ---------------------------------------------------- | ---------------------------------------- |
-| `morpheus_url`  | Yes      | URL of your Morpheus appliance                       | `https://morpheus.company.com`         |
-| `access_token`  | Yes      | API token with instance creation permissions         | Get from Admin → Users → Access Tokens |
-| `morph_version` | Yes      | Morpheus appliance version to install                | `8.0.13-2`                             |
-| `username`      | Yes      | Admin username for the new appliance                 | `admin`                                |
-| `password`      | Yes      | Admin password (must have uppercase, number, symbol) | `Morpheus123!`                         |
-| `licenseKey`    | Yes      | Morpheus license key                                 | Your enterprise or community license     |
+| Variable          | Required | Description                                          | Example                                   |
+| ----------------- | -------- | ---------------------------------------------------- | ----------------------------------------- |
+| `morpheus_url`  | Yes      | URL of your Morpheus appliance                       | `https://morpheus.company.com`          |
+| `access_token`  | Yes      | API token with instance creation permissions         | Get from → Users Settings → API Access |
+| `morph_version` | Yes      | Morpheus appliance version to install                | `8.0.13-2`                              |
+| `username`      | Yes      | Admin username for the new appliance                 | `admin`                                 |
+| `password`      | Yes      | Admin password (must have uppercase, number, symbol) | `Morpheus123!`                          |
+| `licenseKey`    | Yes      | Morpheus license key                                 | Your enterprise or community license      |
 
 ## Environment Requirements
 
