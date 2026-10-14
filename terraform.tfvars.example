@@ -1,0 +1,15 @@
+# Values for the Cypher tfvar secret (e.g. tfvars/morpheus_tf_app) used by the
+# Morpheus App Blueprint, or copy to terraform.tfvars when running locally.
+
+morpheus_url = "https://morpheus.example.com"
+access_token = "00000000-0000-0000-0000-000000000000"
+username     = "admin"
+password     = "ChangeMe123?"
+licenseKey   = "" # empty = skip activation
+
+# Optional (also editable in the App form)
+# morph_version  = "8.0.13-2"
+# appliance_name = "The Matrix"
+
+# Placement and installer settings (cloud, pool, network, plan, datastore,
+# timeouts, ...) live in locals.tf and are not exposed in the App form.
